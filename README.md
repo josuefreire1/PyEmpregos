@@ -1,2 +1,4 @@
-# PyEmpregos
-Simple Program with Python to scrape net-empregos website
+### PyEmpregos
+
+Created this for me just to have an easier way to watch all able offers in the categories that I'm interested.
+
