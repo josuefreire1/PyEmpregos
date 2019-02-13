@@ -2,7 +2,7 @@ from urllib.request import urlopen as uRed
 from bs4 import BeautifulSoup as soup
 
 
-maxsize = 3
+maxsize = 2
 i = 1
 
 while i < maxsize +1:
@@ -23,3 +23,4 @@ while i < maxsize +1:
 	for y in range(tam):
 		print(containers[y].a.get_text())
 	i+=1
+input()
