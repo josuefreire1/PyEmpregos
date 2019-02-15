@@ -4,6 +4,8 @@ Created to have an easier way to watch all job offers, in a single page, in the 
 
 Right now this program retrieves jobs info from net-empregos and prints on the console  for the category that was selected  
 
+**To Build (you are going to need)**: python-3.7.2 and beautifulsoup4
+
 **TODO:**
   - [x] Create a category list menu
   - [ ] Export to CSV (or other format)
