@@ -1,5 +1,9 @@
+import os
 from urllib.request import urlopen as uRed
 from bs4 import BeautifulSoup as soup
+
+def cls():
+    os.system('cls' if os.name=='nt' else 'clear')
 
 def search_by_category(cat):
 	maxsize = 2
@@ -26,13 +30,15 @@ def search_by_category(cat):
 			maxsize = len(pag.get_text().replace('\n','').replace(' ',''))
 			i+=1
 
-		for y in range(tam): print(containers[y].get_text())
+		for y in range(tam): 
+			print(containers[y].get_text())
+		print("\n")
 
 ## simple menu [FIX]
 menu=True
 cat= 99
 while menu:
-	print ("""
+	print ("""Menu:
 	1.Analise de Sistemas
 	2.Formação
 	3.Gestão de Redes
@@ -65,7 +71,8 @@ while menu:
 		cat = 99 ##added so if you are in the menu and you just press enter it doesnt giv you back the the previous query
 
 	if cat != 99:
-
+		cls()
 		search_by_category(cat)
 		print("\n\nENTER to go back to menu!")
 		input()
+		cls()
