@@ -1,31 +1,71 @@
 from urllib.request import urlopen as uRed
 from bs4 import BeautifulSoup as soup
 
+def search_by_category(cat):
+	maxsize = 2
+	i = 1
 
-maxsize = 2
-i = 1
+	while i < maxsize +1:
 
-while i < maxsize +1:
+		myurl = 'https://www.net-empregos.com/listagem_livre2_2.asp?page=' + str(i) + '&CHAVES=maia&ZONA=2&CATEGORIA='+ str(cat)
 
-	myurl = 'https://www.net-empregos.com/listagem_livre2_2.asp?page=' + str(i) + '&CHAVES=maia&ZONA=2&CATEGORIA=38'
+		uClient = uRed(myurl)
+		page_html =uClient.read()
+		uClient.close()
+		page_soup = soup(page_html, "html.parser")
 
-	uClient = uRed(myurl)
-	page_html =uClient.read()
-	uClient.close()
-	page_soup = soup(page_html, "html.parser")
+		containers = page_soup.findAll("font",{"style":"FONT-SIZE: 15px; LINE-HEIGHT: 14px"})
+		tam = len(containers)
+		pag = page_soup.find("table", {"height": "6","width": "0"})
 
-	containers = page_soup.findAll("font",{"style":"FONT-SIZE: 15px; LINE-HEIGHT: 14px"})
-	tam = len(containers)
-	pag = page_soup.find("table", {"height": "6","width": "0"})
+		print("Pag:", i, "Items:", tam)
 
-	print("Pag:", i, "Items:", tam)
+		if pag == None:
+			i=3
+		else:
+			maxsize = len(pag.get_text().replace('\n','').replace(' ',''))
+			i+=1
 
-	if pag == None:
-		i=3
+		for y in range(tam): print(containers[y].get_text())
+
+## simple menu [FIX]
+menu=True
+cat= 99
+while menu:
+	print ("""
+	1.Analise de Sistemas
+	2.Formação
+	3.Gestão de Redes
+	4.Internet
+	5.Multimedia
+	6.Programação
+	7.Técnico de Hardware
+	8.Comercial/Gestor de Conta
+	""")
+	menu = input("List (ENTER to exit):")
+	if menu=="1":
+		cat = 38
+	elif menu=="2":
+		cat = 34
+	elif menu=="3":
+		cat = 38
+	elif menu=="4":
+		cat = 37
+	elif menu=="5":
+		cat = 36
+	elif menu=="6":
+		cat = 5
+	elif menu=="7":
+		cat = 49
+	elif menu=="8":
+		cat = 56
+	elif menu !="":
+		print("\n Not Valid Choice Try again")
 	else:
-		maxsize = len(pag.get_text().replace('\n','').replace(' ',''))
-		i+=1
+		cat = 99 ##added so if you are in the menu and you just press enter it doesnt giv you back the the previous query
 
-	for y in range(tam):
-		print(containers[y].get_text())
-input()
+	if cat != 99:
+
+		search_by_category(cat)
+		print("\n\nENTER to go back to menu!")
+		input()
