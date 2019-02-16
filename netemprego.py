@@ -3,7 +3,7 @@ import urllib.request
 from bs4 import BeautifulSoup as soup
 
 def cls():
-	os.system('cls||clear')
+	os.system('cls' if os.name == 'nt' else 'clear')
 
 def search_by_category(cat):
 	maxsize = 2
