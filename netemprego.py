@@ -1,9 +1,9 @@
 import os
-from urllib.request import urlopen as uRed
+import urllib.request
 from bs4 import BeautifulSoup as soup
 
 def cls():
-    os.system('cls' if os.name=='nt' else 'clear')
+	os.system('cls||clear')
 
 def search_by_category(cat):
 	maxsize = 2
@@ -13,9 +13,10 @@ def search_by_category(cat):
 
 		myurl = 'https://www.net-empregos.com/listagem_livre2_2.asp?page=' + str(i) + '&CHAVES=maia&ZONA=2&CATEGORIA='+ str(cat)
 
-		uClient = uRed(myurl)
-		page_html =uClient.read()
-		uClient.close()
+		req = urllib.request.Request(myurl)
+		with urllib.request.urlopen(req) as response:
+			page_html = response.read()
+
 		page_soup = soup(page_html, "html.parser")
 
 		containers = page_soup.findAll("font",{"style":"FONT-SIZE: 15px; LINE-HEIGHT: 14px"})
@@ -67,8 +68,7 @@ while menu:
 		cat = 56
 	elif menu !="":
 		print("\n Not Valid Choice Try again")
-	else:
-		cat = 99 ##added so if you are in the menu and you just press enter it doesnt giv you back the the previous query
+		cat = 99
 
 	if cat != 99:
 		cls()
