@@ -38,17 +38,14 @@ def search_by_category(cat):
 ## simple menu [FIX]
 menu=True
 cat= 99
+fmenu = open("menu.txt", "r").read()
+
+
 while menu:
-	print ("""Menu:
-	1.Analise de Sistemas
-	2.Formação
-	3.Gestão de Redes
-	4.Internet
-	5.Multimedia
-	6.Programação
-	7.Técnico de Hardware
-	8.Comercial/Gestor de Conta
-	""")
+	##for x in f:
+
+	print(fmenu)
+
 	menu = input("List (ENTER to exit):")
 	if menu=="1":
 		cat = 38
