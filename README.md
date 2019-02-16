@@ -9,6 +9,6 @@ Right now this program retrieves jobs info from net-empregos and prints on the c
 **To Build (you are going to need)**: python-3.7.2 and beautifulsoup4
 
 **TODO:**
-    - ~~Create a category list menu~~
-    - Export to CSV (or other format)
-    - Organise by category
+- ~~Create a category list menu~~
+- Export to CSV (or other format)
+- Organise by category
