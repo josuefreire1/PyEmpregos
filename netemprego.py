@@ -30,7 +30,7 @@ def search_by_category(cat):
 			maxsize = len(pag.get_text().replace('\n','').replace(' ',''))
 			i+=1
 
-		for y in range(tam): 
+		for y in range(tam):
 			print(containers[y].get_text())
 		print("\n")
 
