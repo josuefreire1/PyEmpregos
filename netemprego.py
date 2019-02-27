@@ -8,7 +8,6 @@ def cls():
 def search_by_category(cat):
 	maxsize = 2
 	i = 1
-
 	while i < maxsize +1:
 
 		myurl = 'https://www.net-empregos.com/listagem_livre2_2.asp?page=' + str(i) + '&CHAVES=maia&ZONA=2&CATEGORIA='+ str(cat)
@@ -17,7 +16,7 @@ def search_by_category(cat):
 		with urllib.request.urlopen(req) as response:
 			page_html = response.read()
 
-		page_soup = soup(page_html, "html.parser")
+		page_soup = soup(page_html, "lxml")
 
 		containers = page_soup.findAll("font",{"style":"FONT-SIZE: 15px; LINE-HEIGHT: 14px"})
 		tam = len(containers)
