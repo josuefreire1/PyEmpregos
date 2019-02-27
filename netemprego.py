@@ -27,5 +27,3 @@ while i < maxsize +1:
 	for y in range(tam):
 		print(containers[y].get_text())
 	print("\n")
-	
-input()
