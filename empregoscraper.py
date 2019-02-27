@@ -21,7 +21,7 @@ while page_index <= page_limit:
     #Getting the number of pages
     page_info = soup.find("center")
     page_limit = len(page_info.get_text().replace('\n','').replace(' ',''))
-    
+
     #Getting the sectons where the job info is
     main_block = soup.findAll("div",{"style":"background-color:#FFFFFF;border:1px solid #C3D9FF"})
     titles = main_block[1].findAll("font",{"style":"FONT-SIZE: 15px; LINE-HEIGHT: 14px"})
