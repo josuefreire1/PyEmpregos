@@ -3,7 +3,8 @@ from bs4 import BeautifulSoup as soup
 
 maxsize = 2
 i = 1
-while i < maxsize +1:
+while i <= maxsize:
+
 	myurl = 'https://www.net-empregos.com/listagem_livre2_2.asp?page=' + str(i) + '&CHAVES=maia&ZONA=2&CATEGORIA=5'
 
 	req = urllib.request.Request(myurl)
@@ -14,16 +15,9 @@ while i < maxsize +1:
 
 	containers = page_soup.findAll("font",{"style":"FONT-SIZE: 15px; LINE-HEIGHT: 14px"})
 	tam = len(containers)
-	pag = page_soup.find("table", {"height": "6","width": "0"})
+	pag = page_soup.find("center")
 
-	print("Pag:", i, "Items:", tam)
+	print(pag.get_text().replace('\n','').replace(' ',''))
 
-	if pag == None:
-		i=3
-	else:
-		maxsize = len(pag.get_text().replace('\n','').replace(' ',''))
-		i+=1
-
-	for y in range(tam):
-		print(containers[y].get_text())
-	print("\n")
+	maxsize = len(pag.get_text().replace('\n','').replace(' ',''))
+	i+=1
