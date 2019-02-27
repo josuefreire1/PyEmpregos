@@ -28,15 +28,13 @@ while page_index <= page_limit:
     blocks = main_block[1].findAll("table",{"width":"738"})
     blocks_size = len(blocks)
 
-    #For loop that iterates betwen the the job offers 
+    #For loop that iterates betwen the the job offers also writes all the data to the csv file
     for block in range(blocks_size):
         title = titles[block].text.strip()
         company = blocks[block].findAll('td')[3].text.strip()
         date = blocks[block].findAll('td')[5].text.strip()
         catgory = blocks[block].findAll('td')[7].text.strip()
         link = linker + titles[block].find('a').get('href')
-        
-        #writes all the data to the csv file
         csv_writer.writerow([date,title,company,catgory,link])
 
     #change the current page
