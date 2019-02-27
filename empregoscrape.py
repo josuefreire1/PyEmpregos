@@ -19,14 +19,15 @@ titles = main_block[1].findAll("font",{"style":"FONT-SIZE: 15px; LINE-HEIGHT: 14
 blocks = main_block[1].findAll("table",{"width":"738"})
 blocks_size = len(blocks)
 
-
+#For loop that iterates betwen the the job offers 
 for block in range(blocks_size):
     title = titles[block].text.strip()
     company = blocks[block].findAll('td')[3].text.strip()
     date = blocks[block].findAll('td')[5].text.strip()
     catgory = blocks[block].findAll('td')[7].text.strip()
     link = linker + titles[block].find('a').get('href')
-    print (date,title,company,catgory,link, '\n\n')
+    
+    #writes all the data to the csv file
     csv_writer.writerow([date,title,company,catgory,link])
 
 csv_file.close()
