@@ -22,7 +22,7 @@ Quality Assurance Engineer
 Then run the script:
 
 ```
-python empregossraper.py
+python empregoscraper.py
 ```
 
 At the end of execution you should see a file named scrape.csv
