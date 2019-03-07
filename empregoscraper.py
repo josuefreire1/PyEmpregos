@@ -9,9 +9,10 @@ data_category = open('data.txt', 'r')
 lines = data_category.read().replace(' ','+').split('\n')
 
 
-#Variables to control the current page
+
 
 for line  in lines:
+    #Variables to control the current page
     page_index = 1
     page_limit = 2
     while page_index <= page_limit:
